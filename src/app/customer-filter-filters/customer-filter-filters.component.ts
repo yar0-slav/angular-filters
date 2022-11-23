@@ -7,14 +7,13 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./customer-filter-filters.component.scss'],
 })
 export class CustomerFilterFiltersComponent {
+  filterForm: FormGroup;
 
-
-  constructor(private fb: FormBuilder) {}
-
-  filterForm = this.fb.group({
-    filters: this.fb.group({
-      type: ['']
-    }),
-  });
-  
+  constructor(private fb: FormBuilder) {
+    this.filterForm = this.fb.group({
+      filters: this.fb.group({
+        type: ['']
+      }),
+    });
+  }
 }

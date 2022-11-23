@@ -1,17 +1,18 @@
-<ng-container [formGroup]="controlContainer.control">
+<ng-container *ngIf="events" [formGroup]="ogForm">
   <mat-card-actions>
     <mat-form-field appearance="fill">
       <mat-label>Select Event</mat-label>
-      <mat-select (selectionChange)="getSelectedEventProperties()" [(ngModel)]="selectedEvent">
-        <mat-option *ngFor="let event of events.data.events" [value]="event.type" formControlName="type">{{event.type}}</mat-option>
+      <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="type">
+        <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{event.type}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Select Properties</mat-label>
       <mat-select>
-        <mat-option *ngFor="let properties of eventProperties" [value]="properties.property">{{properties.property}}
-        </mat-option>
+        <mat-option *ngFor="let properties of eventProperties" [value]="properties.property">{{properties.property}}</mat-option>
       </mat-select>
     </mat-form-field>
   </mat-card-actions>
 </ng-container>
+
+{{ this.ogForm.get('type').value }}

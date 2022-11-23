@@ -6,8 +6,6 @@ import { take } from 'rxjs';
 
 import { FiltersService } from './../services/filters.service';
 
-
-
 @Component({
   selector: 'app-customer-filter-step',
   templateUrl: './customer-filter-step.component.html',
@@ -17,36 +15,41 @@ export class CustomerFilterStepComponent implements OnInit {
   events: any;
   selectedEvent = '';
   eventProperties: any;
+  ogForm: any;
 
   constructor(
     private filtersService: FiltersService,
     public controlContainer: ControlContainer
     ) {}
 
+
   ngOnInit(): void {
     this.fetchData();
+    this.ogForm = this.controlContainer.control;
   }
 
-  getSelectedEventProperties() {
-    console.log(this.selectedEvent);
+  getSelectedEventProperties(event: any) {
     const { data: { events } } = this.events;
     const filtered = events.filter(
-      (option: { type: string }) => option.type === this.selectedEvent
+      (option: { type: string }) => option.type === event.value
     );
-    console.log(filtered[0].properties);
+    console.log(filtered);
     this.eventProperties = filtered[0].properties;
     return filtered[0].properties;
   }
 
-  currentlySelectedEvent(e: string) {
-    console.log(this.selectedEvent);
-    return e;
+  get populatedEvents() {
+    return this.ogForm.get('type')
   }
+
 
   fetchData(): void {
     this.filtersService
       .getFiltersData()
       .pipe(take(1))
-      .subscribe((data) => (this.events = data));
+      .subscribe((data) => {
+        console.log(data);
+        this.events = data
+      });
   }
 }
