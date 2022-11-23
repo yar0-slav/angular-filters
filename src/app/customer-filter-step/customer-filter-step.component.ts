@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ControlContainer } from '@angular/forms';
+import { FormControl, FormBuilder } from '@angular/forms';
+
 import { take } from 'rxjs';
+
 import { FiltersService } from './../services/filters.service';
+
+
 
 @Component({
   selector: 'app-customer-filter-step',
@@ -11,7 +17,11 @@ export class CustomerFilterStepComponent implements OnInit {
   events: any;
   selectedEvent = '';
   eventProperties: any;
-  constructor(private filtersService: FiltersService) {}
+
+  constructor(
+    private filtersService: FiltersService,
+    public controlContainer: ControlContainer
+    ) {}
 
   ngOnInit(): void {
     this.fetchData();

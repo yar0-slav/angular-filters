@@ -1,9 +1,11 @@
-<div class="customer-filter--filters">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Filter</mat-card-title>
-    </mat-card-header>
-    <app-customer-filter-step></app-customer-filter-step>
-    <button mat-raised-button color="primary">Filter</button>
-  </mat-card>
-</div>
+<form [formGroup]="filterForm">
+  <ng-container class="customer-filter--filters">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Filter</mat-card-title>
+      </mat-card-header>
+      <app-customer-filter-step formGroupName="filters"></app-customer-filter-step>
+      <button mat-raised-button color="primary">Filter</button>
+    </mat-card>
+  </ng-container>
+</form>
