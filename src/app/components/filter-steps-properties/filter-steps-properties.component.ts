@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ControlContainer, FormArray } from '@angular/forms';
 
 @Component({
-  selector: 'app-customer-filter-properties',
-  templateUrl: './customer-filter-properties.component.html',
-  styleUrls: ['./customer-filter-properties.component.scss']
+  selector: 'app-filter-steps-properties',
+  templateUrl: './filter-steps-properties.component.html',
+  styleUrls: ['./filter-steps-properties.component.scss']
 })
-export class CustomerFilterPropertiesComponent implements OnInit {
+export class FilterStepsPropertiesComponent implements OnInit {
   parentForm: any;
   @Input() filters : any;
   @Input('filtersIndex') i: any;

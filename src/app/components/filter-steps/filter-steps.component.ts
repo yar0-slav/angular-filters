@@ -9,11 +9,11 @@ import { FiltersService } from 'src/app/services/filters.service';
 
 
 @Component({
-  selector: 'app-customer-filter-step',
-  templateUrl: './customer-filter-step.component.html',
-  styleUrls: ['./customer-filter-step.component.scss'],
+  selector: 'app-filter-steps',
+  templateUrl: './filter-steps.component.html',
+  styleUrls: ['./filter-steps.component.scss'],
 })
-export class CustomerFilterStepComponent implements OnInit {
+export class FilterStepsComponent implements OnInit {
   events: any;
   eventProperties: any;
   parentForm: any;
@@ -35,7 +35,6 @@ export class CustomerFilterStepComponent implements OnInit {
     const filtered = events.filter(
       (option: { type: string }) => option.type === event.value
     );
-    console.log(filtered);
     this.eventProperties = filtered[0].properties;
     return filtered[0].properties;
   }

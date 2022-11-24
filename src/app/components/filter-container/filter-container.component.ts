@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-customer-filter-filters',
-  templateUrl: './customer-filter-filters.component.html',
-  styleUrls: ['./customer-filter-filters.component.scss'],
+  selector: 'app-filter-container',
+  templateUrl: './filter-container.component.html',
+  styleUrls: ['./filter-container.component.scss'],
 })
-export class CustomerFilterFiltersComponent {
+export class FilterContainerComponent {
   filterForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
