@@ -13,17 +13,7 @@
         <!-- event end -->
 
         <!-- props start -->
-        <ng-container formArrayName="eventProperties">
-          <ng-container *ngFor="let property of getEventProperties(i).controls; index as j"  formGroupName="{{ j }}">
-            <mat-form-field appearance="fill">
-              <mat-label>Select Properties</mat-label>
-              <mat-select  formControlName="property">
-                <mat-option *ngFor="let properties of eventProperties" [value]="properties">
-                  {{ properties.property }}</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </ng-container>
-        </ng-container>
+        <app-customer-filter-properties [eventProperties]="eventProperties" [filtersIndex]="i" [filters]="filters"></app-customer-filter-properties>
         <!-- props end -->
 
       </mat-card-actions>

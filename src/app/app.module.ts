@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { CustomerFilterOperatorsComponent } from './components/customer-filter-operators/customer-filter-operators.component';
+import { CustomerFilterPropertiesComponent } from './components/customer-filter-properties/customer-filter-properties.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
     CustomerFilterComponent,
     CustomerFilterFiltersComponent,
     CustomerFilterStepComponent,
+    CustomerFilterOperatorsComponent,
+    CustomerFilterPropertiesComponent,
   ],
   imports: [
     BrowserModule,
