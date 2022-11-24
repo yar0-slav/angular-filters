@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 
 import { take } from 'rxjs';
+import { FiltersService } from 'src/app/services/filters.service';
 
-import { FiltersService } from './../services/filters.service';
 
 @Component({
   selector: 'app-customer-filter-step',
