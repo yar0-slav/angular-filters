@@ -1,12 +1,11 @@
 <form [formGroup]="filterForm">
-  <ng-container class="customer-filter--filters">
+  <ng-container>
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Filter</mat-card-title>
+        <mat-card-subtitle>Step 1</mat-card-subtitle>
       </mat-card-header>
-      <app-customer-filter-step formGroupName="filters"></app-customer-filter-step>
-      <button mat-raised-button color="primary">Filter</button>
+        <app-customer-filter-step></app-customer-filter-step>
+      <button (click)="onClickSubmit()" mat-raised-button color="primary">Filter</button>
     </mat-card>
   </ng-container>
 </form>
-

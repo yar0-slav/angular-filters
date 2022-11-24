@@ -1,18 +1,35 @@
-<ng-container *ngIf="events" [formGroup]="ogForm">
-  <mat-card-actions>
-    <mat-form-field appearance="fill">
-      <mat-label>Select Event</mat-label>
-      <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="type">
-        <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{event.type}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Select Properties</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let properties of eventProperties" [value]="properties.property">{{properties.property}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-card-actions>
+<ng-container *ngIf="events" [formGroup]="parentForm">
+  <ng-container formArrayName="filters">
+    <div *ngFor="let filter of filters.controls; index as i" formGroupName="{{ i }}">
+      <mat-card-actions>
+
+        <!-- event start -->
+        <mat-form-field appearance="fill">
+          <mat-label>Select Event</mat-label>
+          <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
+            <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- event end -->
+
+        <!-- props start -->
+        <ng-container formArrayName="eventProperties">
+          <ng-container *ngFor="let property of getEventProperties(i).controls; index as j"  formGroupName="{{ j }}">
+            <mat-form-field appearance="fill">
+              <mat-label>Select Properties</mat-label>
+              <mat-select  formControlName="property">
+                <mat-option *ngFor="let properties of eventProperties" [value]="properties">
+                  {{ properties.property }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-container>
+        </ng-container>
+        <!-- props end -->
+
+      </mat-card-actions>
+    </div>
+  </ng-container>
 </ng-container>
 
-{{ this.ogForm.get('type').value }}
+
+<!-- <pre> {{ events | json }}</pre> -->

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer } from '@angular/forms';
-import { FormControl, FormBuilder } from '@angular/forms';
+import {
+  ControlContainer,
+  FormArray,
+  FormBuilder,
+  FormControl,
+} from '@angular/forms';
 
 import { take } from 'rxjs';
 
@@ -13,23 +17,23 @@ import { FiltersService } from './../services/filters.service';
 })
 export class CustomerFilterStepComponent implements OnInit {
   events: any;
-  selectedEvent = '';
   eventProperties: any;
-  ogForm: any;
+  parentForm: any;
 
   constructor(
     private filtersService: FiltersService,
     public controlContainer: ControlContainer
-    ) {}
-
+  ) {}
 
   ngOnInit(): void {
     this.fetchData();
-    this.ogForm = this.controlContainer.control;
+    this.parentForm = this.controlContainer.control;
   }
 
   getSelectedEventProperties(event: any) {
-    const { data: { events } } = this.events;
+    const {
+      data: { events },
+    } = this.events;
     const filtered = events.filter(
       (option: { type: string }) => option.type === event.value
     );
@@ -38,18 +42,21 @@ export class CustomerFilterStepComponent implements OnInit {
     return filtered[0].properties;
   }
 
-  get populatedEvents() {
-    return this.ogForm.get('type')
+  get filters() {
+    return this.parentForm.get('filters') as FormArray;
   }
 
+  getEventProperties(i: number) {
+    return this.filters.at(i).get('eventProperties') as FormArray;
+  }
 
   fetchData(): void {
     this.filtersService
       .getFiltersData()
       .pipe(take(1))
       .subscribe((data) => {
-        console.log(data);
-        this.events = data
+        console.log('api data', data);
+        this.events = data;
       });
   }
 }
