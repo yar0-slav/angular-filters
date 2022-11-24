@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  ControlContainer,
-  FormArray
-} from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { ControlContainer, FormArray } from '@angular/forms';
 
 import { take } from 'rxjs';
 import { FiltersService } from 'src/app/services/filters.service';
-
 
 @Component({
   selector: 'app-filter-steps',
@@ -14,17 +10,13 @@ import { FiltersService } from 'src/app/services/filters.service';
   styleUrls: ['./filter-steps.component.scss'],
 })
 export class FilterStepsComponent implements OnInit {
-  events: any;
+  @Input() events: any;
   eventProperties: any;
   parentForm: any;
 
-  constructor(
-    private filtersService: FiltersService,
-    public controlContainer: ControlContainer
-  ) {}
+  constructor(public controlContainer: ControlContainer) {}
 
   ngOnInit(): void {
-    this.fetchData();
     this.parentForm = this.controlContainer.control;
   }
 
@@ -45,15 +37,5 @@ export class FilterStepsComponent implements OnInit {
 
   getEventProperties(i: number) {
     return this.filters.at(i).get('eventProperties') as FormArray;
-  }
-
-  fetchData(): void {
-    this.filtersService
-      .getFiltersData()
-      .pipe(take(1))
-      .subscribe((data) => {
-        console.log('api data', data);
-        this.events = data;
-      });
   }
 }

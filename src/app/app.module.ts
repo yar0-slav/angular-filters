@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { FilterStepsOperatorsComponent } from './components/filter-steps-operators/filter-steps-operators.component';
 import { FilterStepsPropertiesComponent } from './components/filter-steps-properties/filter-steps-properties.component';
 
@@ -33,6 +34,7 @@ import { FilterStepsPropertiesComponent } from './components/filter-steps-proper
     AppRoutingModule,
     HttpClientModule,
     MatCardModule,
+    MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,

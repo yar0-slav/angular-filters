@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ControlContainer, FormArray } from '@angular/forms';
+import { ControlContainer, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-filter-steps-properties',
@@ -21,5 +21,6 @@ export class FilterStepsPropertiesComponent implements OnInit {
   getEventProperties(i: number) {
     return this.filters.at(i).get('eventProperties') as FormArray;
   }
+
 
 }
