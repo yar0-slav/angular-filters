@@ -1,8 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ControlContainer, FormArray } from '@angular/forms';
-
-import { take } from 'rxjs';
-import { FiltersService } from 'src/app/services/filters.service';
+import { Component, OnInit } from '@angular/core';
+import { ControlContainer, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-filter-steps',
@@ -10,29 +7,27 @@ import { FiltersService } from 'src/app/services/filters.service';
   styleUrls: ['./filter-steps.component.scss'],
 })
 export class FilterStepsComponent implements OnInit {
-  @Input() events: any;
-  filteredEventProperties: any;
   parentForm: any;
 
-  constructor(public controlContainer: ControlContainer) {}
-
-  ngOnInit(): void {
-    this.parentForm = this.controlContainer.control;
-  }
-
-  getSelectedEventProperties(event: any) {
-    const {
-      data: { events },
-    } = this.events;
-    const filtered = events.filter(
-      (option: { type: string }) => option.type === event.value
-    );
-    this.filteredEventProperties = filtered[0].properties;
-    return filtered[0].properties;
-  }
+  constructor(
+    public controlContainer: ControlContainer,
+    private fb: FormBuilder
+  ) {}
 
   get filters() {
     return this.parentForm.get('filters') as FormArray;
   }
 
+  // addFilterStep() {
+  //   this.filters.push(
+  //     this.fb.control({
+  //       eventType: [''],
+  //       eventProperties: this.fb.array([])
+  //     })
+  //   )
+  // }
+
+  ngOnInit(): void {
+    this.parentForm = this.controlContainer.control;
+  }
 }

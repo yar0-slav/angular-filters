@@ -1,35 +1,11 @@
-<ng-container *ngIf="events" [formGroup]="parentForm">
+<ng-container [formGroup]="parentForm">
   <ng-container formArrayName="filters">
-    <ng-container *ngFor="let filter of filters.controls; index as filtersIndex">
-      <ng-container formGroupName="{{ filtersIndex }}">
-        <mat-card-actions>
-
-          <!-- event start -->
-          <!-- <mat-form-field appearance="fill">
-          <mat-label>Select Event</mat-label>
-          <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
-            <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
-          <mat-form-field appearance="fill">
-            <mat-label>Select Event</mat-label>
-            <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
-              <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- event end -->
-
-          <!-- props start -->
-          <app-filter-step-property [filteredEventProperties]="filteredEventProperties" [filtersIndex]="filtersIndex"
-            [filters]="filters"></app-filter-step-property>
-          <!-- props end -->
-
-        </mat-card-actions>
-      </ng-container>
+    <mat-card-header>
+      <ng-container *ngFor="let x of filters.controls; index as filtersIndex">
+      <mat-card-subtitle>Step {{ filtersIndex + 1 }}</mat-card-subtitle>
+      <!-- <button (click)="addFilterStep()"> Add step</button> -->
     </ng-container>
+    </mat-card-header>
+    <app-filter-properties [filters]="filters"></app-filter-properties>
   </ng-container>
 </ng-container>
-
-
-<!-- <pre> {{ events | json }}</pre> -->

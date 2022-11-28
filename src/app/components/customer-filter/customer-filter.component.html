@@ -3,6 +3,18 @@
     <mat-card-header>
       <mat-card-title>Filters</mat-card-title>
     </mat-card-header>
-    <app-filter-container></app-filter-container>
+    <form [formGroup]="filterForm">
+      <app-filter-steps></app-filter-steps>
+      <mat-card-actions>
+        <button (click)="onClickSubmit()" mat-raised-button color="primary">Filter</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  <br>
+  <mat-card>
+    <ng-container *ngIf="finalForm">
+      <mat-card-title>Console log:</mat-card-title>
+      <pre>{{finalForm | json }}</pre>
+    </ng-container>
   </mat-card>
 </div>

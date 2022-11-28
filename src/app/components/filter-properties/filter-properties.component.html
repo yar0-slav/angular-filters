@@ -1,0 +1,30 @@
+<ng-container *ngIf="events" [formGroup]="parentForm">
+  <ng-container *ngFor="let filter of filters.controls; index as filtersIndex">
+    <ng-container formGroupName="{{ filtersIndex }}">
+      <mat-card-actions>
+
+        <!-- event start -->
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Select Event</mat-label>
+          <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
+            <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select Event</mat-label>
+          <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
+            <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- event end -->
+
+        <!-- props start -->
+        <app-filter-step-property [filteredEventProperties]="filteredEventProperties" [filtersIndex]="filtersIndex"
+          [filters]="filters"></app-filter-step-property>
+        <!-- props end -->
+
+      </mat-card-actions>
+    </ng-container>
+  </ng-container>
+</ng-container>

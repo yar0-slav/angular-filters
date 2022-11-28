@@ -6,8 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { FilterPropertiesComponent } from './components/filter-properties/filter-properties.component';
 import { FilterStepsComponent } from './components/filter-steps/filter-steps.component';
-import { FilterContainerComponent } from './components/filter-container/filter-container.component';
 import { CustomerFilterComponent } from './components/customer-filter/customer-filter.component';
 
 import { StepPropertyOperatorComponent } from './components/step-property-operator/step-property-operator.component';
@@ -28,8 +28,8 @@ import { OperatorsComponent } from './components/operators/operators.component';
   declarations: [
     AppComponent,
     CustomerFilterComponent,
-    FilterContainerComponent,
     FilterStepsComponent,
+    FilterPropertiesComponent,
     StepPropertyOperatorComponent,
     FilterStepPropertyComponent,
     OperatorsComponent,
