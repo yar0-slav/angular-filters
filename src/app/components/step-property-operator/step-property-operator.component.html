@@ -1,0 +1,15 @@
+<ng-container [formGroup]="parentForm">
+  <ng-container formGroupName="operator">
+    <app-operators></app-operators>
+    <ng-container formArrayName="values">
+      <ng-container *ngFor="let value of valuesControls; index as valueIndex">
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input [formControlName]="valueIndex" type="text" matInput>
+        </mat-form-field>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+

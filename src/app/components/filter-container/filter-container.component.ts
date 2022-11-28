@@ -11,15 +11,12 @@ import { FiltersService } from 'src/app/services/filters.service';
 })
 export class FilterContainerComponent implements OnInit {
   events: any;
+  finalForm: any;
 
   constructor(
     private fb: FormBuilder,
     private filtersService: FiltersService
   ) {}
-
-  ngOnInit(): void {
-    this.fetchData();
-  }
 
   filterForm: FormGroup = this.fb.group({
     filters: this.fb.array([
@@ -31,7 +28,11 @@ export class FilterContainerComponent implements OnInit {
             type: [''],
             operator: this.fb.group({
               name: [''],
-              values: this.fb.array([['']]),
+              type: [''],
+              values: this.fb.array([
+                [''],
+                ['']
+              ]),
             }),
           }),
         ]),
@@ -39,7 +40,16 @@ export class FilterContainerComponent implements OnInit {
     ]),
   });
 
+  get formArrayFilters() {
+    return this.filterForm.get('filters');
+  }
+
+  ngOnInit(): void {
+    this.fetchData();
+  }
+
   onClickSubmit(): void {
+    this.finalForm = this.filterForm.getRawValue();
     console.log(this.filterForm.getRawValue());
   }
 

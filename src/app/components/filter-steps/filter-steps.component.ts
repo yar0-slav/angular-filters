@@ -11,7 +11,7 @@ import { FiltersService } from 'src/app/services/filters.service';
 })
 export class FilterStepsComponent implements OnInit {
   @Input() events: any;
-  eventProperties: any;
+  filteredEventProperties: any;
   parentForm: any;
 
   constructor(public controlContainer: ControlContainer) {}
@@ -27,7 +27,7 @@ export class FilterStepsComponent implements OnInit {
     const filtered = events.filter(
       (option: { type: string }) => option.type === event.value
     );
-    this.eventProperties = filtered[0].properties;
+    this.filteredEventProperties = filtered[0].properties;
     return filtered[0].properties;
   }
 
@@ -35,7 +35,4 @@ export class FilterStepsComponent implements OnInit {
     return this.parentForm.get('filters') as FormArray;
   }
 
-  getEventProperties(i: number) {
-    return this.filters.at(i).get('eventProperties') as FormArray;
-  }
 }

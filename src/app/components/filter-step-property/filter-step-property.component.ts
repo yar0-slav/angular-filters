@@ -1,16 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ControlContainer, FormArray, FormControl } from '@angular/forms';
+import { ControlContainer, FormArray } from '@angular/forms';
 
 @Component({
-  selector: 'app-filter-steps-properties',
-  templateUrl: './filter-steps-properties.component.html',
-  styleUrls: ['./filter-steps-properties.component.scss']
+  selector: 'app-filter-step-property',
+  templateUrl: './filter-step-property.component.html',
+  styleUrls: ['./filter-step-property.component.scss']
 })
-export class FilterStepsPropertiesComponent implements OnInit {
+export class FilterStepPropertyComponent implements OnInit {
   parentForm: any;
   @Input() filters : any;
-  @Input('filtersIndex') i: any;
-  @Input() eventProperties: any;
+  @Input() filtersIndex: any;
+  @Input() filteredEventProperties: any;
 
   constructor( public controlContainer: ControlContainer ) {}
 
@@ -21,6 +21,5 @@ export class FilterStepsPropertiesComponent implements OnInit {
   getEventProperties(i: number) {
     return this.filters.at(i).get('eventProperties') as FormArray;
   }
-
 
 }

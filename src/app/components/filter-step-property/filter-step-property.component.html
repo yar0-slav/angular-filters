@@ -1,0 +1,26 @@
+<ng-container [formGroup]="parentForm">
+  <ng-container formArrayName="eventProperties">
+    <ng-container *ngFor="let property of getEventProperties(filtersIndex).controls; index as eventPropertiesIndex">
+      <ng-container formGroupName="{{ eventPropertiesIndex }}">
+        <mat-form-field appearance="fill">
+          <mat-label>Select Properties</mat-label>
+          <mat-select formControlName="property">
+            <mat-option *ngFor="let properties of filteredEventProperties" [value]="properties">
+              {{ properties.property }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+          <!-- <app-operators></app-operators>
+
+          <mat-form-field>
+            <mat-label></mat-label>
+            <input formArrayName="values" type="text" matInput>
+          </mat-form-field> -->
+
+
+          <app-step-property-operator [eventProperties]="getEventProperties(filtersIndex)"></app-step-property-operator>
+
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
