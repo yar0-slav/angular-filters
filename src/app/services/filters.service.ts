@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 @Injectable({ providedIn: "root" })
 export class FiltersService {
 
-  readonly ROOT_URL = 'https://customer-events.herokuapp.com/';
+  readonly ROOT_URL = 'https://br-fe-assignment.github.io/customer-events/events.json';
 
   constructor(private http: HttpClient) { }
 

@@ -23,9 +23,7 @@ export class FilterPropertiesComponent implements OnInit {
   }
 
   getSelectedEventProperties(event: any) {
-    const {
-      data: { events },
-    } = this.events;
+    const { events } = this.events;
     const filtered = events.filter(
       (option: { type: string }) => option.type === event.value
     );

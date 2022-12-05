@@ -14,7 +14,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Select Event</mat-label>
           <mat-select (selectionChange)="getSelectedEventProperties($event)" formControlName="eventType">
-            <mat-option *ngFor="let event of events.data.events" [value]="event.type">{{ event.type }}</mat-option>
+            <mat-option *ngFor="let event of events.events" [value]="event.type">{{ event.type }}</mat-option>
           </mat-select>
         </mat-form-field>
         <!-- event end -->
