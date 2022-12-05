@@ -1,5 +1,8 @@
 <ng-container *ngIf="events" [formGroup]="parentForm">
   <ng-container *ngFor="let filter of filters.controls; index as filtersIndex">
+    <mat-card-header>
+      <mat-card-subtitle>Step {{ filtersIndex + 1 }}</mat-card-subtitle>
+    </mat-card-header>
     <ng-container formGroupName="{{ filtersIndex }}">
       <mat-card-actions>
 

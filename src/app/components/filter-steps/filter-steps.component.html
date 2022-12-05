@@ -1,11 +1,5 @@
 <ng-container [formGroup]="parentForm">
   <ng-container formArrayName="filters">
-    <mat-card-header>
-      <ng-container *ngFor="let x of filters.controls; index as filtersIndex">
-      <mat-card-subtitle>Step {{ filtersIndex + 1 }}</mat-card-subtitle>
-      <!-- <button (click)="addFilterStep()"> Add step</button> -->
-    </ng-container>
-    </mat-card-header>
     <app-filter-properties [filters]="filters"></app-filter-properties>
   </ng-container>
 </ng-container>

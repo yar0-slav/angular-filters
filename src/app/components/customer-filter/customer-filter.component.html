@@ -4,7 +4,10 @@
       <mat-card-title>Filters</mat-card-title>
     </mat-card-header>
     <form [formGroup]="filterForm">
-      <app-filter-steps></app-filter-steps>
+      <app-filter-steps
+        (deleteFilterStepEvent)="deleteFilter($event)">
+      </app-filter-steps>
+      <button (click)="addNewFilter()" mat-raised-button color="primary">Add New Step</button>
       <mat-card-actions>
         <button (click)="onClickSubmit()" mat-raised-button color="primary">Filter</button>
       </mat-card-actions>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ControlContainer, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,10 @@ import { ControlContainer, FormBuilder, FormArray } from '@angular/forms';
 })
 export class FilterStepsComponent implements OnInit {
   parentForm: any;
+  filterStep: any;
+
+  @Output()
+  deleteFilterStepEvent: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
     public controlContainer: ControlContainer,
@@ -16,6 +20,64 @@ export class FilterStepsComponent implements OnInit {
 
   get filters() {
     return this.parentForm.get('filters') as FormArray;
+  }
+
+  //   specimenFields : FormGroup = this.formBuilder.group({
+  //     specimenControls: this.formBuilder.array([
+  //     ])
+  // });
+
+  // this.fb.group({
+  //   eventType: [''],
+  //   eventProperties: this.fb.array([
+  //     this.fb.group({
+  //       property: [''],
+  //       type: [''],
+  //       operator: this.fb.group({
+  //         name: [''],
+  //         type: [''],
+  //         values: this.fb.array([['']]),
+  //       }),
+  //     }),
+  //   ]),
+  // }),
+
+  // this.fb.group({
+  //   eventType: [''],
+  //   eventProperties: this.fb.array([
+  //     this.fb.group({
+  //       property: [''],
+  //       type: [''],
+  //       operator: this.fb.group({
+  //         name: [''],
+  //         type: [''],
+  //         values: this.fb.array([['']]),
+  //       }),
+  //     }),
+  //   ]),
+  // });
+
+  createFilterStep() {
+    this.filterStep = this.fb.group({
+      eventType: [''],
+      eventProperties: this.fb.array([
+        this.fb.group({
+          property: [''],
+          type: [''],
+          operator: this.fb.group({
+            name: [''],
+            type: [''],
+            values: this.fb.array([['']]),
+          }),
+        }),
+      ]),
+    });
+
+    return this.filterStep;
+  }
+
+  deleteFilterStep(index: number) {
+    this.deleteFilterStepEvent.next(index);
   }
 
   // addFilterStep() {
